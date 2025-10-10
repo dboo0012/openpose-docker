@@ -1,0 +1,52 @@
+services:
+  # Multi-stage build combining OpenPose and FastAPI backend
+  sign2text-full:
+    build:
+      context: .
+      dockerfile: Dockerfile.multistage
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./sign2text-api:/app  # Mount for development
+    environment:
+      - PYTHONPATH=/app:/openpose/build/python
+      - HOST=0.0.0.0
+      - PORT=8000
+      - RELOAD=true
+      - LOG_LEVEL=info
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    
+  # Individual backend service (for testing)
+  backend-only:
+    build:
+      context: ./sign2text-api
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./sign2text-api:/app  # Mount for development
+    environment:
+      - PYTHONPATH=/app
+      - HOST=0.0.0.0
+      - PORT=8000
+      - RELOAD=true
+      - LOG_LEVEL=info
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped
+    stdin_open: true
+    tty: true

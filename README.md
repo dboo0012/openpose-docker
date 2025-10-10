@@ -5,6 +5,10 @@ A docker build file for CMU openpose with Python API support
 - https://github.com/CMU-Perceptual-Computing-Lab/openpose
 - https://hub.docker.com/r/cwaffles/openpose
 
+## Running multistage Docker (Openpose + api)
+- sudo docker build -f Dockerfile.multistage -t sign2text-full .
+- sudo docker run --gpus all --rm -it sign2text-full python /test_integration.py
+
 ### Requirements
 - Nvidia Docker runtime: https://github.com/NVIDIA/nvidia-docker#quickstart
 - CUDA 10.0 or higher on your host, check with `nvidia-smi`
@@ -50,9 +54,9 @@ A docker build file for CMU openpose with Python API support
 10. Set up Python OpenPose inside the container
     ```bash
     cd /openpose/build/python/openpose
-    cp ./pyopenpose.cpython-38-x86_64-linux-gnu.so /usr/local/lib/python3.8/dist-packages
-    cd /usr/local/lib/python3.8/dist-packages
-    ln -s pyopenpose.cpython-38-x86_64-linux-gnu.so pyopenpose
+    cp ./pyopenpose.cpython-311-x86_64-linux-gnu.so /usr/local/lib/python3.11/dist-packages
+    cd /usr/local/lib/python3.11/dist-packages
+    ln -s pyopenpose.cpython-311-x86_64-linux-gnu.so pyopenpose
     export LD_LIBRARY_PATH=/openpose/build/python/openpose
     ```
 
@@ -64,6 +68,12 @@ A docker build file for CMU openpose with Python API support
     >>> import pyopenpose as op
     >>> 
     ```
+
+### Building Docker image
+`sudo docker build -t openpose-docker .`
+
+### Running Docker image
+`sudo docker run --rm -it --gpus all openpose-docker bash`
 
 ### Useful docker commands
 
