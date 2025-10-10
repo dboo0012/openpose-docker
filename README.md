@@ -1,7 +1,9 @@
 # openpose-docker
 A docker build file for CMU openpose with Python API support
 
-https://hub.docker.com/r/cwaffles/openpose
+### Sources
+- https://github.com/CMU-Perceptual-Computing-Lab/openpose
+- https://hub.docker.com/r/cwaffles/openpose
 
 ### Requirements
 - Nvidia Docker runtime: https://github.com/NVIDIA/nvidia-docker#quickstart
