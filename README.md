@@ -2,7 +2,16 @@
 A docker build file for CMU openpose with FastApi Python server API support.
 
 ### Set up
-1. Clone the `openpose-docker` repository
+1. Install Ubuntu 22.04 LTS
+
+2. Install Docker Engine
+   - Follow the apt installation instructions from [Docker's official documentation](https://docs.docker.com/engine/install/ubuntu/)
+
+3. Clone the repository
+   ```bash
+   git clone https://github.com/dboo0012/openpose-docker
+   cd ./openpose-docker
+   ```
 
 ### Building Docker Image (Openpose + api)
 1. `sudo docker build -f Dockerfile.multistage -t sign2text-full .`
