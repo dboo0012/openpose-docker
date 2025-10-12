@@ -1,6 +1,6 @@
 services:
   # Multi-stage build combining OpenPose and FastAPI backend
-  sign2text-full:
+  sign2text-api:
     build:
       context: .
       dockerfile: Dockerfile.multistage

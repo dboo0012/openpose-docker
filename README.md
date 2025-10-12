@@ -1,19 +1,31 @@
 # openpose-docker
-A docker build file for CMU openpose with Python API support
+A docker build file for CMU openpose with FastApi Python server API support.
+
+### Set up
+1. Clone the `openpose-docker` repository
+
+### Building Docker Image (Openpose + api)
+1. `sudo docker build -f Dockerfile.multistage -t sign2text-full .`
+2. `sudo docker run --gpus all --rm -it sign2text-full python3 /test_integration.py`
+3. (if the above doesnt work) `sudo docker run --gpus all --rm -it -v $(pwd):/workspace sign2text-full python3 /workspace/test_integration.py`
+
+### Starting the backend
+1. `docker compose up --build sign2text-api` (Start)
+2. `docker compose down` 
+
+### Requirements
+- Nvidia Docker runtime: https://github.com/NVIDIA/nvidia-docker#quickstart
+<!-- - CUDA 10.0 or higher on your host, check with `nvidia-smi` -->
+- Download `models` from [this drive link](https://drive.google.com/drive/folders/16Q0DSqVUwp4e7sV7BXrS64S-094m7RNk?usp=drive_link), place at root path `openpose-docker/models`
 
 ### Sources
 - https://github.com/CMU-Perceptual-Computing-Lab/openpose
 - https://hub.docker.com/r/cwaffles/openpose
 
-## Running multistage Docker (Openpose + api)
-- sudo docker build -f Dockerfile.multistage -t sign2text-full .
-- sudo docker run --gpus all --rm -it sign2text-full python3 /test_integration.py
-- (testing) sudo docker run --gpus all --rm -it -v $(pwd):/workspace sign2text-full python3 /workspace/test_integration.py
+### Authored By:
+Daryl Boon
 
-### Requirements
-- Nvidia Docker runtime: https://github.com/NVIDIA/nvidia-docker#quickstart
-- CUDA 10.0 or higher on your host, check with `nvidia-smi`
-- Download `models` from [this drive link](https://drive.google.com/drive/folders/16Q0DSqVUwp4e7sV7BXrS64S-094m7RNk?usp=drive_link), ensure it is at root path `openpose-docker/models`
+# IGNORE ALL BELOW
 
 ### Setup
 
