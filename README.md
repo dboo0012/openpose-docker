@@ -7,8 +7,8 @@ A docker build file for CMU openpose with Python API support
 
 ## Running multistage Docker (Openpose + api)
 - sudo docker build -f Dockerfile.multistage -t sign2text-full .
-- sudo docker run --gpus all --rm -it sign2text-full python /test_integration.py
-- (testing) sudo docker run --gpus all --rm -it -v $(pwd):/workspace sign2text-full python /workspace/test_integration.py
+- sudo docker run --gpus all --rm -it sign2text-full python3 /test_integration.py
+- (testing) sudo docker run --gpus all --rm -it -v $(pwd):/workspace sign2text-full python3 /workspace/test_integration.py
 
 ### Requirements
 - Nvidia Docker runtime: https://github.com/NVIDIA/nvidia-docker#quickstart

@@ -55,8 +55,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxrender-dev \
     libgl1-mesa-glx \
     libgoogle-glog-dev \
-    libboost-system-dev libboost-thread-dev \
-    libopencv-core-dev libopencv-highgui-dev libopencv-imgproc-dev && \
+    libboost-all-dev libhdf5-dev libatlas-base-dev \
+    libopencv-dev python3-opencv && \
     rm -rf /var/lib/apt/lists/*
 
 # Copy OpenPose built artifacts from the builder stage
