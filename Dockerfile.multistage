@@ -70,6 +70,9 @@ COPY sign2text-api/requirements.txt ./
 
 # Pre-install the compatible version of networkx to prevent dependency conflict
 RUN pip3 install networkx==3.1
+RUN pip3 install sympy==1.12
+RUN pip3 install fsspec==2023.12.2
+RUN pip3 install typing-extensions==4.8.0
 RUN pip3 install filelock==3.14.0
 
 # Install PyTorch with CUDA 11.8 support (compatible with CUDA 11.4)
